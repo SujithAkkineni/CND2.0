@@ -6,7 +6,7 @@ const path = require('path');
 const app = express();
 
 // Connect to MongoDB (use environment variable for production)
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/cooknextdoor', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://akkinenisujith_db_user:1234@cooknextdoor.6z80hg3.mongodb.net/cooknextdoor?appName=CookNextDoor', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })

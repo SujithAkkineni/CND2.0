@@ -44,9 +44,14 @@ router.get('/payment/:id', async (req, res) => {
 });
 
 router.post('/payment/:id', async (req, res) => {
-  const { buyer, address, quantity } = req.body;
+  const buyer = req.body.buyer;
+  const address = req.query.address;
+  const quantity = req.query.quantity;
   const dishId = req.params.id;
   const dish = await Dish.findById(dishId);
+  if (!dish || !address || !quantity) {
+    return res.redirect('/order');
+  }
   const totalPrice = dish.price * parseInt(quantity);
 
   const order = new Order({
