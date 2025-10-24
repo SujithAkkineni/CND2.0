@@ -6,6 +6,8 @@ block content
 
   each dish in dishes
     .dish
+      if dish.image
+        img(src=dish.image, alt=dish.name, style='width: 300px; height: 200px; object-fit: cover;')
       h3= dish.name
       p Description: #{dish.description || 'No description available'}
       p Price: ₹#{dish.price}

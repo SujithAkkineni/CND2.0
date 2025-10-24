@@ -16,7 +16,11 @@ block content
       tbody
         each order in orders
           tr
-            td= order.dish.name
+            td
+              if order.dish.image
+                img(src=order.dish.image, alt=order.dish.name, style='width: 100px; height: 80px; object-fit: cover;')
+              br
+              = order.dish.name
             td= order.buyer
             td= order.address
             td= order.quantity

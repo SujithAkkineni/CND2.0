@@ -6,6 +6,7 @@ const dishSchema = new mongoose.Schema({
   quantity: { type: Number, required: true },
   description: { type: String },
   seller: { type: String, required: true }, // Seller's name or ID
+  image: { type: String }, // URL to dish image
   createdAt: { type: Date, default: Date.now }
 });
 
