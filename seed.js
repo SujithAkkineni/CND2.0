@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Dish = require('./models/Dish');
 
-mongoose.connect('mongodb+srv://akkinenisujith_db_user:1234@cooknextdoor.6z80hg3.mongodb.net/cooknextdoor?appName=CookNextDoor', {
+mongoose.connect('mongodb+srv://akkinenisujith_db_user:1234@cooknextdoor.6z80hg3.mongodb.net/?appName=CookNextDoor', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
