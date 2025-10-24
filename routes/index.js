@@ -98,4 +98,10 @@ router.get('/sell-success', (req, res) => {
   res.render('sell-success');
 });
 
+// View orders
+router.get('/orders', async (req, res) => {
+  const orders = await Order.find().populate('dish');
+  res.render('orders', { orders });
+});
+
 module.exports = router;
