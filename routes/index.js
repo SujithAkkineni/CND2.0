@@ -44,26 +44,31 @@ router.get('/payment/:id', async (req, res) => {
 });
 
 router.post('/payment/:id', async (req, res) => {
-  const buyer = req.body.buyer;
-  const address = req.query.address;
-  const quantity = req.query.quantity;
-  const dishId = req.params.id;
-  const dish = await Dish.findById(dishId);
-  if (!dish || !address || !quantity) {
-    return res.redirect('/order');
+  try {
+    const buyer = req.body.buyer;
+    const address = req.query.address;
+    const quantity = req.query.quantity;
+    const dishId = req.params.id;
+    const dish = await Dish.findById(dishId);
+    if (!dish || !address || !quantity) {
+      return res.redirect('/order');
+    }
+    const totalPrice = dish.price * parseInt(quantity);
+
+    const order = new Order({
+      dish: dishId,
+      buyer,
+      address,
+      quantity: parseInt(quantity),
+      totalPrice
+    });
+
+    await order.save();
+    res.redirect('/order-success');
+  } catch (error) {
+    console.error('Error saving order:', error);
+    res.redirect('/order');
   }
-  const totalPrice = dish.price * parseInt(quantity);
-
-  const order = new Order({
-    dish: dishId,
-    buyer,
-    address,
-    quantity: parseInt(quantity),
-    totalPrice
-  });
-
-  await order.save();
-  res.redirect('/order-success');
 });
 
 // Sell flow
