@@ -9,6 +9,8 @@ block content
           th Dish
           th Buyer
           th Address
+          th Mobile
+          th Pincode
           th Quantity
           th Total Price
           th Status
@@ -17,12 +19,14 @@ block content
         each order in orders
           tr
             td
-              if order.dish.image
+              if order.dish && order.dish.image
                 img(src=order.dish.image, alt=order.dish.name, style='width: 100px; height: 80px; object-fit: cover;')
               br
-              = order.dish.name
+              = order.dish ? order.dish.name : 'N/A'
             td= order.buyer
             td= order.address
+            td= order.mobile
+            td= order.pincode
             td= order.quantity
             td ₹#{order.totalPrice}
             td= order.status

@@ -9,10 +9,20 @@ block content
   p Quantity: #{quantity}
   p Total Price: ₹#{dish.price * quantity}
   p Delivery Address: #{address}
+  if flatNo
+    p Flat No: #{flatNo}
+  if landmark
+    p Landmark: #{landmark}
+  p Pincode: #{pincode}
+  p Mobile: #{mobile}
   p <strong>Payment Method: Cash on Delivery Only</strong>
 
   form(action=`/payment/${dish._id}`, method='POST')
     input(type='hidden', name='address', value=address)
+    input(type='hidden', name='flatNo', value=flatNo)
+    input(type='hidden', name='landmark', value=landmark)
+    input(type='hidden', name='pincode', value=pincode)
+    input(type='hidden', name='mobile', value=mobile)
     input(type='hidden', name='quantity', value=quantity)
     label(for='buyer') Your Name:
     input(type='text', id='buyer', name='buyer', required)

@@ -1,15 +1,18 @@
 extends layout
 
 block content
-  h1 Welcome to Cook Next Door
-  p Order home-cooked South Indian food from your neighbors or sell your dishes!
+  .hero-section
+    .hero-title Welcome to Cook Next Door
+    .hero-subtitle Experience authentic South Indian home-cooked meals made with love by your neighbors. Discover familiar flavors or share your culinary skills with the community.
 
   .options
     .option
       a(href='/order')
+        .icon 🍛
         h2 Order Food
-        p Browse and order delicious home-cooked meals.
+        p Browse and order delicious home-cooked meals prepared with traditional recipes and fresh ingredients. Fast delivery within your neighborhood.
     .option
       a(href='/sell')
-        h2 Sell Food
-        p List your home-cooked dishes for sale.
+        .icon 👨‍🍳
+        h2 Sell Your Dishes
+        p Share your culinary talents and earn money by listing your home-cooked dishes. Connect with hungry neighbors in your community.

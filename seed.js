@@ -19,7 +19,7 @@ mongoose.connect('mongodb+srv://akkinenisujith_db_user:1234@cooknextdoor.6z80hg3
       quantity: 10,
       description: 'Aromatic basmati rice cooked with tender chicken and spices',
       seller: 'Hyderabad Biryani House',
-      image: 'https://images.unsplash.com/photo-1563379091339-03246963d98c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
+      image: 'https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2088'
     },
     {
       name: 'Mutton Biryani',
@@ -27,7 +27,7 @@ mongoose.connect('mongodb+srv://akkinenisujith_db_user:1234@cooknextdoor.6z80hg3
       quantity: 8,
       description: 'Rich and flavorful biryani with succulent mutton pieces',
       seller: 'Telugu Tadka',
-      image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
+      image: 'https://images.unsplash.com/photo-1691170979035-27e5ec943205?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=711'
     },
     {
       name: 'Prawns Curry',
@@ -54,21 +54,14 @@ mongoose.connect('mongodb+srv://akkinenisujith_db_user:1234@cooknextdoor.6z80hg3
       image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
     },
     {
-      name: 'Idli Sambar',
+      name: 'Burger',
       price: 50,
       quantity: 20,
-      description: 'Soft idlis served with sambar and chutney',
-      seller: 'Amma\'s Kitchen',
-      image: 'https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
+      description: 'Soft buns served with fillings,patty,hot sausce and lettuce',
+      seller: 'Western Kitchen',
+      image: '/images/idli-sambar.jpg'
     },
-    {
-      name: 'Dosa',
-      price: 40,
-      quantity: 25,
-      description: 'Crispy dosa with potato filling',
-      seller: 'South Spice',
-      image: 'https://images.unsplash.com/photo-1668236543090-82f25ac63d44?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
-    }
+    
   ];
 
   await Dish.insertMany(dishes);

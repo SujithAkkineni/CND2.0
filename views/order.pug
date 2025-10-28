@@ -1,19 +1,26 @@
 extends layout
 
 block content
-  h1 Order Food
-  p Select a dish to order:
+  h1 Browse Delicious Dishes
 
-  each dish in dishes
-    .dish
-      if dish.image
-        img(src=dish.image, alt=dish.name, style='width: 300px; height: 200px; object-fit: cover;')
-      h3= dish.name
-      p Description: #{dish.description || 'No description available'}
-      p Price: ₹#{dish.price}
-      p Available Quantity: #{dish.quantity}
-      p Seller: #{dish.seller}
-      form(action=`/order/${dish._id}`, method='POST')
-        label(for=`quantity-${dish._id}`) Quantity:
-        input(type='number', id=`quantity-${dish._id}`, name='quantity', min='1', max=dish.quantity, required)
-        button(type='submit') Select Dish
+  if dishes && dishes.length > 0
+    .dish-grid
+      each dish in dishes
+        .dish( onclick="this.querySelector('input').value=1; this.querySelector('form').submit();")
+          if dish.image
+            img(src=dish.image, alt=dish.name, onerror="this.src='https://via.placeholder.com/300x200?text=No+Image'")
+          else
+            img(src='https://via.placeholder.com/300x200?text=No+Image', alt='No Image')
+          h3= dish.name
+          p= dish.description || 'Authentic South Indian home-cooked meal'
+          p.dish-price ₹#{dish.price}
+          p.dish-quantity Available: #{dish.quantity} serving#{dish.quantity > 1 ? 's' : ''}
+          p.dish-seller By: #{dish.seller}
+          form(action=`/order/${dish._id}`, method='POST', style='display: none;')
+            input(type='number', id=`quantity-${dish._id}`, name='quantity', min='1', max=dish.quantity, value='1', required)
+            button(type='submit')
+  else
+    .no-dishes
+      h2 No dishes available right now
+      p Check back later or list your own dish to get started!
+      a(href='/sell') List Your Dish

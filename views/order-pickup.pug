@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  h1 Order Pickup Location
+  p Your order has been placed successfully. Please pick up your order from the location below.
+
+  .pickup-info
+    h2 Pickup Details
+    p Dish: #{dish.name}
+    p Quantity: #{quantity}
+    p Total Price: ₹#{totalPrice}
+    p Seller: #{seller}
+    p Address: #{address}
+
+  .map-container
+    h2 Location Map
+    iframe(src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30449.8!2d78.4867!3d17.3850!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99daeaebd2c7b%3A0xae93b78392abeb2!2sHyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1698500000000!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade")
+    p Demo location in Hyderabad. Please go to the marked location to pick up your order.
+
+  a(href='/') Back to Home
