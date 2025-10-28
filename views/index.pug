@@ -6,13 +6,43 @@ block content
     .hero-subtitle Experience authentic South Indian home-cooked meals made with love by your neighbors. Discover familiar flavors or share your culinary skills with the community.
 
   .options
-    .option
+    .option(class='option-order')
       a(href='/order')
         .icon 🍛
         h2 Order Food
         p Browse and order delicious home-cooked meals prepared with traditional recipes and fresh ingredients. Fast delivery within your neighborhood.
-    .option
+    .option(class='option-sell')
       a(href='/sell')
         .icon 👨‍🍳
         h2 Sell Your Dishes
         p Share your culinary talents and earn money by listing your home-cooked dishes. Connect with hungry neighbors in your community.
+
+  script.
+    // GSAP Animations for home page
+    gsap.registerPlugin();
+
+    gsap.set('.hero-title', { opacity: 0, y: 50 });
+    gsap.set('.hero-subtitle', { opacity: 0, y: 30 });
+    gsap.set('.option', { opacity: 0, y: 50 });
+
+    const tl = gsap.timeline();
+
+    tl.to('.hero-title', {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power2.out"
+    })
+    .to('.hero-subtitle', {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: "power2.out"
+    }, "-=0.5")
+    .to('.option', {
+      opacity: 1,
+      y: 0,
+      duration: 0.6,
+      stagger: 0.2,
+      ease: "power2.out"
+    }, "-=0.5");

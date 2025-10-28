@@ -24,3 +24,35 @@ block content
       h2 No dishes available right now
       p Check back later or list your own dish to get started!
       a(href='/sell') List Your Dish
+
+  script.
+    // GSAP Animations for dish cards
+    gsap.set('.dish', { opacity: 0, y: 30 });
+
+    ScrollTrigger.batch('.dish', {
+      onEnter: batch => gsap.to(batch, {
+        opacity: 1,
+        y: 0,
+        stagger: 0.1,
+        duration: 0.6,
+        ease: "power2.out"
+      })
+    });
+
+    gsap.utils.toArray('.dish').forEach((dish) => {
+      dish.addEventListener('mouseenter', () => {
+        gsap.to(dish.querySelector('img'), {
+          scale: 1.05,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      });
+
+      dish.addEventListener('mouseleave', () => {
+        gsap.to(dish.querySelector('img'), {
+          scale: 1,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      });
+    });
