@@ -3,56 +3,23 @@ extends layout
 block content
   h1 Browse Delicious Dishes
 
+  p Database Status: Connected and found #{dishes ? dishes.length : 0} dishes
+
   if dishes && dishes.length > 0
-    .dish-grid
-      each dish in dishes
-        .dish( onclick="this.querySelector('input').value=1; this.querySelector('form').submit();")
-          if dish.image
-            img(src=dish.image, alt=dish.name, onerror="this.src='https://via.placeholder.com/300x200?text=No+Image'")
-          else
-            img(src='https://via.placeholder.com/300x200?text=No+Image', alt='No Image')
-          h3= dish.name
-          p= dish.description || 'Authentic South Indian home-cooked meal'
-          p.dish-price ₹#{dish.price}
-          p.dish-quantity Available: #{dish.quantity} serving#{dish.quantity > 1 ? 's' : ''}
-          p.dish-seller By: #{dish.seller}
-          form(action=`/order/${dish._id}`, method='POST', style='display: none;')
-            input(type='number', id=`quantity-${dish._id}`, name='quantity', min='1', max=dish.quantity, value='1', required)
-            button(type='submit')
+    each dish in dishes
+      .dish-item
+        h2= dish.name
+        p= dish.description || 'Authentic South Indian home-cooked meal'
+        p Price: ₹#{dish.price}
+        p Available: #{dish.quantity} servings
+        p By: #{dish.seller}
+        img(src=dish.image, alt=dish.name, width='200', height='150')
+        form(action=`/order/${dish._id}`, method='POST')
+          input(type='number', name='quantity', min='1', max=dish.quantity, value='1')
+          button(type='submit') Order Now
+        hr
   else
-    .no-dishes
-      h2 No dishes available right now
-      p Check back later or list your own dish to get started!
-      a(href='/sell') List Your Dish
+    p No dishes available. Check `/sell` to add some dishes to get started!
 
-  script.
-    // GSAP Animations for dish cards
-    gsap.set('.dish', { opacity: 0, y: 30 });
-
-    ScrollTrigger.batch('.dish', {
-      onEnter: batch => gsap.to(batch, {
-        opacity: 1,
-        y: 0,
-        stagger: 0.1,
-        duration: 0.6,
-        ease: "power2.out"
-      })
-    });
-
-    gsap.utils.toArray('.dish').forEach((dish) => {
-      dish.addEventListener('mouseenter', () => {
-        gsap.to(dish.querySelector('img'), {
-          scale: 1.05,
-          duration: 0.3,
-          ease: "power2.out"
-        });
-      });
-
-      dish.addEventListener('mouseleave', () => {
-        gsap.to(dish.querySelector('img'), {
-          scale: 1,
-          duration: 0.3,
-          ease: "power2.out"
-        });
-      });
-    });
+  style.
+    .dish-item { margin: 20px; padding: 15px; border: 1px solid #ccc; }

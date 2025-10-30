@@ -124,6 +124,9 @@ router.get('/sell-success', (req, res) => {
 // View orders
 router.get('/orders', async (req, res) => {
   const orders = await Order.find().populate('dish');
+  if (!orders) {
+    orders = [];
+  }
   res.render('orders', { orders });
 });
 
